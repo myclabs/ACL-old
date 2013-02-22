@@ -1,0 +1,12 @@
+{
+	"name": "myc-sense/acl",
+	"type": "library",
+	"autoload": {
+		"psr-0": {
+			"Mycsense": "src/"
+		}
+	},
+	"require": {
+		"myc-sense/php-enum": "@dev"
+	}
+}
