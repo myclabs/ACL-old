@@ -25,27 +25,47 @@ class ACLService
     /**
      * Allows the identity to perform the action over the resource
      *
-     * @param string $identity Identity path
+     * @param Identity|string $identity Identity or identity path
      * @param Action $action
-     * @param string $resource Resource path
+     * @param Resource|string $resource Resource path
      */
     public function allow($identity, Action $action, $resource)
     {
-        $this->backend->add(new Entry($identity, $action, $resource));
+        if ($identity instanceof Identity) {
+            $identityPath = $identity->getIdentityPath();
+        } else {
+            $identityPath = (string) $identity;
+        }
+        if ($resource instanceof Resource) {
+            $resourcePath = $resource->getResourcePath();
+        } else {
+            $resourcePath = (string) $resource;
+        }
+        $this->backend->add(new Entry($identityPath, $action, $resourcePath));
     }
 
     /**
      * Test if the identity is allowed to perform the action over the resource
      *
-     * @param string $identity Identity path
+     * @param Identity|string $identity Identity or identity path
      * @param Action $action
-     * @param string $resource Resource path
+     * @param Resource|string $resource Resource or resource path
      *
      * @return bool
      */
     public function isAllowed($identity, Action $action, $resource)
     {
-        $entry = $this->backend->search($identity, $action, $resource);
+        if ($identity instanceof Identity) {
+            $identityPath = $identity->getIdentityPath();
+        } else {
+            $identityPath = $identity;
+        }
+        if ($resource instanceof Resource) {
+            $resourcePath = $resource->getResourcePath();
+        } else {
+            $resourcePath = (string) $resource;
+        }
+        $entry = $this->backend->search($identityPath, $action, $resourcePath);
         if ($entry !== null) {
             return true;
         }

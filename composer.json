@@ -3,7 +3,9 @@
 	"type": "library",
 	"autoload": {
 		"psr-0": {
-			"Mycsense": "src/"
+			"Mycsense": "src/",
+			"FunctionalTest": "tests/",
+			"UnitTest": "tests/"
 		}
 	},
 	"require": {
