@@ -5,6 +5,9 @@ namespace Mycsense\ACL;
 class ACLService
 {
 
+    /**
+     * @var Entry[]
+     */
     private $storage = [];
 
     /**
@@ -15,24 +18,22 @@ class ACLService
     public function allow($identity, $action, $resource)
     {
         echo "ADDED " . $resource . PHP_EOL;
-        $this->storage[] = $resource;
+        $this->storage[] = new Entry($identity, $action, $resource);
     }
 
     public function isAllowed($identity, $action, $resource)
     {
-        foreach ($this->storage as $authorization) {
-            $pattern = preg_quote($authorization);
-            // (*) => ([^\)]*)
-            $pattern = str_replace('\(\*\)', '\([^\(]*\)', $pattern);
-            // )* => ).*
-            $pattern = str_replace('\)\*', '\).*', $pattern);
-            // )/* => )/.*
-            $pattern = str_replace('\)/\*', '\)/.*', $pattern);
-            if (preg_match("#$pattern$#", $resource) === 1) {
-                echo "$authorization MATCHING $resource" . PHP_EOL;
+        foreach ($this->storage as $entry) {
+            // Action
+            if ($action != $entry->getAction()) {
+                continue;
+            }
+            // Resource
+            if (preg_match($entry->getResourceRegexPattern(), $resource) === 1) {
+                echo $entry->getResourcePath() . " MATCHING $resource" . PHP_EOL;
                 return true;
             } else {
-                echo "$authorization NOT MATCHING $resource" . PHP_EOL;
+                echo $entry->getResourcePath() . " NOT MATCHING $resource" . PHP_EOL;
             }
         }
         return false;

@@ -66,4 +66,12 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($isAllowed);
     }
 
+    public function testAllowAction()
+    {
+        $aclService = new ACLService();
+        $aclService->allow("User(*)", Action::VIEW(), "Resource(*)");
+        $isAllowed = $aclService->isAllowed("User(*)", Action::EDIT(), "Resource(*)");
+        $this->assertFalse($isAllowed);
+    }
+
 }
