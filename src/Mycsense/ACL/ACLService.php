@@ -15,6 +15,7 @@ class ACLService
 
     /**
      * Allows the identity to perform the action over the resource
+     *
      * @param string $identity Identity path
      * @param Action $action
      * @param string $resource Resource path

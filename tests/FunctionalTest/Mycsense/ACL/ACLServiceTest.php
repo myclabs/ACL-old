@@ -1,8 +1,8 @@
 <?php
 
-namespace UnitTest\ACL;
+namespace UnitTest\Mycsense\ACL;
 
-require_once __DIR__ . '/../../../vendor/autoload.php';
+require_once __DIR__ . '/../../../../vendor/autoload.php';
 
 use Mycsense\ACL\ACLService;
 use Mycsense\ACL\Action;
