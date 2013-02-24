@@ -2,9 +2,9 @@
 
 namespace FunctionalTest\Mycsense\ACL\EntityTest\Fixture;
 
-use Mycsense\ACL\Identity;
+use Mycsense\ACL\Resource;
 
-class User implements Identity
+class Category implements Resource
 {
 
     private $id;
@@ -14,9 +14,8 @@ class User implements Identity
         $this->id = $id;
     }
 
-    public function getIdentityPath()
+    function getResourcePath()
     {
-        return "User({$this->id})";
+        return "Category({$this->id})";
     }
-
 }
