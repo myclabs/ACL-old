@@ -2,6 +2,9 @@
 
 namespace Mycsense\ACL;
 
+use Mycsense\ACL\Backend\Backend;
+use Mycsense\ACL\Backend\MemoryBackend;
+
 /**
  * ACL management service
  */
@@ -9,9 +12,15 @@ class ACLService
 {
 
     /**
-     * @var Entry[]
+     * @var Backend
      */
-    private $storage = [];
+    private $backend = [];
+
+    public function __construct()
+    {
+        // Default backend
+        $this->backend = new MemoryBackend();
+    }
 
     /**
      * Allows the identity to perform the action over the resource
@@ -22,7 +31,7 @@ class ACLService
      */
     public function allow($identity, Action $action, $resource)
     {
-        $this->storage[] = new Entry($identity, $action, $resource);
+        $this->backend->add(new Entry($identity, $action, $resource));
     }
 
     /**
@@ -36,22 +45,19 @@ class ACLService
      */
     public function isAllowed($identity, Action $action, $resource)
     {
-        foreach ($this->storage as $entry) {
-            // Action
-            if ($action != $entry->getAction()) {
-                continue;
-            }
-            // Identity
-            if (preg_match($entry->getIdentityRegexPattern(), $identity) !== 1) {
-                continue;
-            }
-            // Resource
-            if (preg_match($entry->getResourceRegexPattern(), $resource) !== 1) {
-                continue;
-            }
+        $entry = $this->backend->search($identity, $action, $resource);
+        if ($entry !== null) {
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param Backend $backend
+     */
+    public function setBackend(Backend $backend)
+    {
+        $this->backend = $backend;
     }
 
 }
