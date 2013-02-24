@@ -1,5 +1,7 @@
 # ACL
 
+[![Build Status](https://secure.travis-ci.org/myc-sense/ACL.png)](http://travis-ci.org/myc-sense/ACL)
+
 Access control based on string paths.
 
     ALLOW User(123) TO VIEW User(123)
