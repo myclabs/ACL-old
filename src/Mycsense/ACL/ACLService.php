@@ -2,6 +2,9 @@
 
 namespace Mycsense\ACL;
 
+/**
+ * ACL management service
+ */
 class ACLService
 {
 
@@ -11,16 +14,26 @@ class ACLService
     private $storage = [];
 
     /**
-     * @param string $identity
-     * @param string $action
-     * @param string $resource
+     * Allows the identity to perform the action over the resource
+     * @param string $identity Identity path
+     * @param Action $action
+     * @param string $resource Resource path
      */
-    public function allow($identity, $action, $resource)
+    public function allow($identity, Action $action, $resource)
     {
         $this->storage[] = new Entry($identity, $action, $resource);
     }
 
-    public function isAllowed($identity, $action, $resource)
+    /**
+     * Test if the identity is allowed to perform the action over the resource
+     *
+     * @param string $identity Identity path
+     * @param Action $action
+     * @param string $resource Resource path
+     *
+     * @return bool
+     */
+    public function isAllowed($identity, Action $action, $resource)
     {
         foreach ($this->storage as $entry) {
             // Action

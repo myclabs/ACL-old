@@ -4,6 +4,9 @@ namespace Mycsense\ACL;
 
 use Mycsense\Enum\Enum;
 
+/**
+ * ACL action over a resource
+ */
 class Action extends Enum
 {
 
