@@ -17,7 +17,6 @@ class ACLService
      */
     public function allow($identity, $action, $resource)
     {
-        echo "ADDED " . $resource . PHP_EOL;
         $this->storage[] = new Entry($identity, $action, $resource);
     }
 
@@ -28,13 +27,15 @@ class ACLService
             if ($action != $entry->getAction()) {
                 continue;
             }
-            // Resource
-            if (preg_match($entry->getResourceRegexPattern(), $resource) === 1) {
-                echo $entry->getResourcePath() . " MATCHING $resource" . PHP_EOL;
-                return true;
-            } else {
-                echo $entry->getResourcePath() . " NOT MATCHING $resource" . PHP_EOL;
+            // Identity
+            if (preg_match($entry->getIdentityRegexPattern(), $identity) !== 1) {
+                continue;
             }
+            // Resource
+            if (preg_match($entry->getResourceRegexPattern(), $resource) !== 1) {
+                continue;
+            }
+            return true;
         }
         return false;
     }

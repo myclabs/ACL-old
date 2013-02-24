@@ -62,6 +62,21 @@ class Entry
     /**
      * @return string
      */
+    public function getIdentityRegexPattern()
+    {
+        $pattern = preg_quote($this->identityPath);
+        // (*) => ([^\)]*)
+        $pattern = str_replace('\(\*\)', '\([^\(]*\)', $pattern);
+        // )* => ).*
+        $pattern = str_replace('\)\*', '\).*', $pattern);
+        // )/* => )/.*
+        $pattern = str_replace('\)/\*', '\)/.*', $pattern);
+        return "#$pattern$#";
+    }
+
+    /**
+     * @return string
+     */
     public function getResourceRegexPattern()
     {
         $pattern = preg_quote($this->resourcePath);

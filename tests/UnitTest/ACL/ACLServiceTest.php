@@ -10,7 +10,7 @@ use Mycsense\ACL\Action;
 class ACLServiceTest extends \PHPUnit_Framework_TestCase
 {
 
-    public function testAllow1()
+    public function testAllowResource1()
     {
         $aclService = new ACLService();
         $aclService->allow("User(*)", Action::VIEW(), "Resource(*)");
@@ -20,7 +20,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($isAllowed);
     }
 
-    public function testAllow2()
+    public function testAllowResource2()
     {
         $aclService = new ACLService();
         $aclService->allow("User(*)", Action::VIEW(), "Article(*)/Comment(*)");
@@ -32,7 +32,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($isAllowed);
     }
 
-    public function testAllow3()
+    public function testAllowResource3()
     {
         $aclService = new ACLService();
         $aclService->allow("User(*)", Action::VIEW(), "Category(*)*");
@@ -44,7 +44,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($isAllowed);
     }
 
-    public function testAllow4()
+    public function testAllowResource4()
     {
         $aclService = new ACLService();
         $aclService->allow("User(*)", Action::VIEW(), "Category(*)/*");
@@ -56,7 +56,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($isAllowed);
     }
 
-    public function testAllow5()
+    public function testAllowResource5()
     {
         $aclService = new ACLService();
         $aclService->allow("User(*)", Action::VIEW(), "Book(*)");
@@ -72,6 +72,24 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $aclService->allow("User(*)", Action::VIEW(), "Resource(*)");
         $isAllowed = $aclService->isAllowed("User(*)", Action::EDIT(), "Resource(*)");
         $this->assertFalse($isAllowed);
+    }
+
+    public function testAllowIdentity1()
+    {
+        $aclService = new ACLService();
+        $aclService->allow("User(1)", Action::VIEW(), "Resource(*)");
+        $isAllowed = $aclService->isAllowed("User(1)", Action::VIEW(), "Resource(*)");
+        $this->assertTrue($isAllowed);
+        $isAllowed = $aclService->isAllowed("User(2)", Action::VIEW(), "Resource(*)");
+        $this->assertFalse($isAllowed);
+    }
+
+    public function testAllowIdentity2()
+    {
+        $aclService = new ACLService();
+        $aclService->allow("Role(1)/User(*)", Action::VIEW(), "Resource(*)");
+        $isAllowed = $aclService->isAllowed("Role(1)/User(1)", Action::VIEW(), "Resource(*)");
+        $this->assertTrue($isAllowed);
     }
 
 }
