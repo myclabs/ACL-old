@@ -1,5 +1,7 @@
 # ACL
 
+Access control based on string paths.
+
     ALLOW User(123) TO VIEW User(123)
     ALLOW User(123) TO EDIT User(123)
 
@@ -31,8 +33,6 @@
 
 API:
 
-    $aclService->allow()->any(User::class)->to(Action::VIEW())->any(Article::class);
     $aclService->allow("User(*)", Action::VIEW(), "Article(*)");
-    $aclService->set("ALLOW User(*) TO VIEW Article(*)");
 
     $aclService->isAllowed("User(12)", Action::VIEW(), "Article(13)");
