@@ -5,10 +5,14 @@
 		"psr-0": {
 			"Mycsense": "src/",
 			"FunctionalTest": "tests/",
-			"UnitTest": "tests/"
+			"UnitTest": "tests/",
+            "PerformanceTest": "tests/"
 		}
 	},
 	"require": {
 		"myc-sense/php-enum": "@dev"
-	}
+	},
+    "require-dev" : {
+        "mnapoli/phpbench": "dev-master"
+    }
 }
