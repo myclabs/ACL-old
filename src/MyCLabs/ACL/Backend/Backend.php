@@ -5,7 +5,7 @@ namespace MyCLabs\ACL\Backend;
 use MyCLabs\ACL\Action;
 use MyCLabs\ACL\Entry;
 
-interface MyCLabs
+interface Backend
 {
     /**
      * @param Entry $entry

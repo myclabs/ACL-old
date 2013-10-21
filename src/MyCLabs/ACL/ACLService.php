@@ -10,7 +10,6 @@ use MyCLabs\ACL\Backend\MemoryBackend;
  */
 class ACLService
 {
-
     /**
      * @var Backend
      */
@@ -79,5 +78,4 @@ class ACLService
     {
         $this->backend = $backend;
     }
-
 }

@@ -6,7 +6,6 @@ use MyCLabs\ACL\Resource;
 
 class Category implements Resource
 {
-
     private $id;
 
     public function __construct($id)
@@ -14,7 +13,7 @@ class Category implements Resource
         $this->id = $id;
     }
 
-    function getResourcePath()
+    public function getResourcePath()
     {
         return "Category({$this->id})";
     }

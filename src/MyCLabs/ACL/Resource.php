@@ -7,5 +7,5 @@ interface Resource
     /**
      * @return string
      */
-    function getResourcePath();
+    public function getResourcePath();
 }

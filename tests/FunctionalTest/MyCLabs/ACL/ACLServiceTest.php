@@ -7,7 +7,6 @@ use MyCLabs\ACL\Action;
 
 class ACLServiceTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testAllowResource1()
     {
         $aclService = new ACLService();
@@ -89,5 +88,4 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
         $isAllowed = $aclService->isAllowed("Role(1)/User(1)", Action::VIEW(), "Resource(*)");
         $this->assertTrue($isAllowed);
     }
-
 }

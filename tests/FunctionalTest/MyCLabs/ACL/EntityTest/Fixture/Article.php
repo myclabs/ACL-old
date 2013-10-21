@@ -6,7 +6,6 @@ use MyCLabs\ACL\Resource;
 
 class Article implements Resource
 {
-
     private $id;
 
     /**
@@ -36,5 +35,4 @@ class Article implements Resource
         }
         return "Article({$this->id})";
     }
-
 }

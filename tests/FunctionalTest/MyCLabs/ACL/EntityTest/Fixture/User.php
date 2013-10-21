@@ -6,7 +6,6 @@ use MyCLabs\ACL\Identity;
 
 class User implements Identity
 {
-
     private $id;
 
     public function __construct($id)
@@ -18,5 +17,4 @@ class User implements Identity
     {
         return "User({$this->id})";
     }
-
 }

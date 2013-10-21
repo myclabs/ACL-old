@@ -7,7 +7,6 @@ namespace MyCLabs\ACL;
  */
 class Entry
 {
-
     /**
      * @var string
      */
@@ -36,7 +35,7 @@ class Entry
     }
 
     /**
-     * @return \Mycsense\ACL\Action
+     * @return Action
      */
     public function getAction()
     {
@@ -58,5 +57,4 @@ class Entry
     {
         return $this->resourcePath;
     }
-
 }

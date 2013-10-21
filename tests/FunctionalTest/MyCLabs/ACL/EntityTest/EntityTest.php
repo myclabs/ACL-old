@@ -10,7 +10,6 @@ use MyCLabs\ACL\ACLService;
 
 class EntityTest extends \PHPUnit_Framework_TestCase
 {
-
     public function test1()
     {
         $aclService = new ACLService();
@@ -42,5 +41,4 @@ class EntityTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($aclService->isAllowed($user1, Action::VIEW(), $article1));
         $this->assertFalse($aclService->isAllowed($user1, Action::VIEW(), $article2));
     }
-
 }

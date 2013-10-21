@@ -7,5 +7,5 @@ interface Identity
     /**
      * @return string
      */
-    function getIdentityPath();
+    public function getIdentityPath();
 }
