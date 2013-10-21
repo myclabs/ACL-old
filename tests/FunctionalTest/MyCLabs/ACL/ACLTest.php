@@ -2,14 +2,14 @@
 
 namespace FunctionalTest\MyCLabs\ACL;
 
-use MyCLabs\ACL\ACLService;
+use MyCLabs\ACL\ACL;
 use MyCLabs\ACL\Action;
 
 class ACLServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testAllowResource1()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(*)", Action::VIEW(), "Resource(*)");
         $isAllowed = $aclService->isAllowed("User(*)", Action::VIEW(), "Resource(*)");
         $this->assertTrue($isAllowed);
@@ -19,7 +19,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowResource2()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(*)", Action::VIEW(), "Article(*)/Comment(*)");
         $isAllowed = $aclService->isAllowed("User(*)", Action::VIEW(), "Article(12)");
         $this->assertFalse($isAllowed);
@@ -31,7 +31,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowResource3()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(*)", Action::VIEW(), "Category(*)*");
         $isAllowed = $aclService->isAllowed("User(*)", Action::VIEW(), "Category(12)");
         $this->assertTrue($isAllowed);
@@ -43,7 +43,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowResource4()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(*)", Action::VIEW(), "Category(*)/*");
         $isAllowed = $aclService->isAllowed("User(*)", Action::VIEW(), "Category(12)");
         $this->assertFalse($isAllowed);
@@ -55,7 +55,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowResource5()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(*)", Action::VIEW(), "Book(*)");
         $isAllowed = $aclService->isAllowed("User(*)", Action::VIEW(), "Shelf(12)/Book(45)");
         $this->assertTrue($isAllowed);
@@ -65,7 +65,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowAction()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(*)", Action::VIEW(), "Resource(*)");
         $isAllowed = $aclService->isAllowed("User(*)", Action::EDIT(), "Resource(*)");
         $this->assertFalse($isAllowed);
@@ -73,7 +73,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowIdentity1()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("User(1)", Action::VIEW(), "Resource(*)");
         $isAllowed = $aclService->isAllowed("User(1)", Action::VIEW(), "Resource(*)");
         $this->assertTrue($isAllowed);
@@ -83,7 +83,7 @@ class ACLServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testAllowIdentity2()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $aclService->allow("Role(1)/User(*)", Action::VIEW(), "Resource(*)");
         $isAllowed = $aclService->isAllowed("Role(1)/User(1)", Action::VIEW(), "Resource(*)");
         $this->assertTrue($isAllowed);

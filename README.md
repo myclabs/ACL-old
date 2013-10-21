@@ -35,6 +35,6 @@ Access control based on string paths.
 
 API:
 
-    $aclService->allow("User(*)", Action::VIEW(), "Article(*)");
+    $acl->allow("User(*)", Action::VIEW(), "Article(*)");
 
-    $aclService->isAllowed("User(12)", Action::VIEW(), "Article(13)");
+    $acl->isAllowed("User(12)", Action::VIEW(), "Article(13)");

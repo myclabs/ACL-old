@@ -8,17 +8,16 @@ use MyCLabs\ACL\Backend\MemoryBackend;
 /**
  * ACL management service
  */
-class ACLService
+class ACL
 {
     /**
      * @var Backend
      */
     private $backend = [];
 
-    public function __construct()
+    public function __construct(Backend $backend = null)
     {
-        // Default backend
-        $this->backend = new MemoryBackend();
+        $this->backend = $backend ?: new MemoryBackend();
     }
 
     /**
@@ -53,13 +52,5 @@ class ACLService
         $entry = $this->backend->search($identityPath, $action, $resourcePath);
 
         return ($entry !== null);
-    }
-
-    /**
-     * @param Backend $backend
-     */
-    public function setBackend(Backend $backend)
-    {
-        $this->backend = $backend;
     }
 }

@@ -6,13 +6,13 @@ use FunctionalTest\MyCLabs\ACL\EntityTest\Fixture\Article;
 use FunctionalTest\MyCLabs\ACL\EntityTest\Fixture\Category;
 use FunctionalTest\MyCLabs\ACL\EntityTest\Fixture\User;
 use MyCLabs\ACL\Action;
-use MyCLabs\ACL\ACLService;
+use MyCLabs\ACL\ACL;
 
 class EntityTest extends \PHPUnit_Framework_TestCase
 {
     public function test1()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $article = new Article(1);
         $article2 = new Article(2);
         $user = new User(1);
@@ -27,7 +27,7 @@ class EntityTest extends \PHPUnit_Framework_TestCase
 
     public function test2()
     {
-        $aclService = new ACLService();
+        $aclService = new ACL();
         $category1 = new Category(1);
         $category2 = new Category(2);
         $article1 = new Article(1);
