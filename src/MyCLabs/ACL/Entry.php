@@ -1,6 +1,6 @@
 <?php
 
-namespace Mycsense\ACL;
+namespace MyCLabs\ACL;
 
 /**
  * Access Control Entry

@@ -1,8 +1,8 @@
 <?php
 
-namespace FunctionalTest\Mycsense\ACL\EntityTest\Fixture;
+namespace FunctionalTest\MyCLabs\ACL\EntityTest\Fixture;
 
-use Mycsense\ACL\Identity;
+use MyCLabs\ACL\Identity;
 
 class User implements Identity
 {

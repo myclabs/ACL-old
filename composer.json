@@ -1,18 +1,15 @@
 {
-	"name": "myc-sense/acl",
-	"type": "library",
-	"autoload": {
-		"psr-0": {
-			"Mycsense": "src/",
-			"FunctionalTest": "tests/",
-			"UnitTest": "tests/",
+    "name": "myclabs/acl",
+    "type": "library",
+    "autoload": {
+        "psr-0": {
+            "MyCLabs": "src/",
+            "FunctionalTest": "tests/",
+            "UnitTest": "tests/",
             "PerformanceTest": "tests/"
-		}
-	},
-	"require": {
-		"myc-sense/php-enum": "@dev"
-	},
-    "require-dev" : {
-        "mnapoli/phpbench": "dev-master"
+        }
+    },
+    "require": {
+        "myclabs/php-enum": "1.*"
     }
 }

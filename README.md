@@ -1,6 +1,6 @@
 # ACL
 
-[![Build Status](https://secure.travis-ci.org/myc-sense/ACL.png)](http://travis-ci.org/myc-sense/ACL)
+[![Build Status](https://secure.travis-ci.org/myclabs/ACL.png)](http://travis-ci.org/myclabs/ACL)
 
 Access control based on string paths.
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace FunctionalTest\Mycsense\ACL\EntityTest\Fixture;
+namespace FunctionalTest\MyCLabs\ACL\EntityTest\Fixture;
 
-use Mycsense\ACL\Resource;
+use MyCLabs\ACL\Resource;
 
 class Category implements Resource
 {

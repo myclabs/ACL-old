@@ -1,17 +1,16 @@
 <?php
 
-namespace Mycsense\ACL\Backend;
+namespace MyCLabs\ACL\Backend;
 
-use Mycsense\ACL\Action;
-use Mycsense\ACL\Entry;
+use MyCLabs\ACL\Action;
+use MyCLabs\ACL\Entry;
 
-interface Backend
+interface MyCLabs
 {
-
     /**
      * @param Entry $entry
      */
-    function add(Entry $entry);
+    public function add(Entry $entry);
 
     /**
      * @param string $identityPath
@@ -20,6 +19,5 @@ interface Backend
      *
      * @return Entry|null Null if not found
      */
-    function search($identityPath, Action $action, $resourcePath);
-
+    public function search($identityPath, Action $action, $resourcePath);
 }

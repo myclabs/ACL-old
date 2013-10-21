@@ -1,9 +1,9 @@
 <?php
 
-namespace Mycsense\ACL;
+namespace MyCLabs\ACL;
 
-use Mycsense\ACL\Backend\Backend;
-use Mycsense\ACL\Backend\MemoryBackend;
+use MyCLabs\ACL\Backend\Backend;
+use MyCLabs\ACL\Backend\MemoryBackend;
 
 /**
  * ACL management service

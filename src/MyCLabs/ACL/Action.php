@@ -1,15 +1,14 @@
 <?php
 
-namespace Mycsense\ACL;
+namespace MyCLabs\ACL;
 
-use Mycsense\Enum\Enum;
+use MyCLabs\Enum\Enum;
 
 /**
  * ACL action over a resource
  */
 class Action extends Enum
 {
-
     const VIEW = 'view';
     const EDIT = 'edit';
     const CREATE = 'create';

@@ -1,13 +1,12 @@
 <?php
 
-namespace Mycsense\ACL\Backend;
+namespace MyCLabs\ACL\Backend;
 
-use Mycsense\ACL\Action;
-use Mycsense\ACL\Entry;
+use MyCLabs\ACL\Action;
+use MyCLabs\ACL\Entry;
 
 class MemoryBackend implements Backend
 {
-
     /**
      * @var Entry[]
      */
@@ -60,5 +59,4 @@ class MemoryBackend implements Backend
         $pattern = str_replace('\)/\*', '\)/.*', $pattern);
         return "#$pattern$#";
     }
-
 }

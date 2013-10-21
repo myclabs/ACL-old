@@ -1,9 +1,9 @@
 <?php
 
-namespace FunctionalTest\Mycsense\ACL;
+namespace FunctionalTest\MyCLabs\ACL;
 
-use Mycsense\ACL\ACLService;
-use Mycsense\ACL\Action;
+use MyCLabs\ACL\ACLService;
+use MyCLabs\ACL\Action;
 
 class ACLServiceTest extends \PHPUnit_Framework_TestCase
 {

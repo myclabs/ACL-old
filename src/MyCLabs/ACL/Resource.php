@@ -1,13 +1,11 @@
 <?php
 
-namespace Mycsense\ACL;
+namespace MyCLabs\ACL;
 
 interface Resource
 {
-
     /**
      * @return string
      */
     function getResourcePath();
-
 }

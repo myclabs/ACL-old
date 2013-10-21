@@ -1,12 +1,12 @@
 <?php
 
-namespace FunctionalTest\Mycsense\ACL\EntityTest;
+namespace FunctionalTest\MyCLabs\ACL\EntityTest;
 
-use FunctionalTest\Mycsense\ACL\EntityTest\Fixture\Article;
-use FunctionalTest\Mycsense\ACL\EntityTest\Fixture\Category;
-use FunctionalTest\Mycsense\ACL\EntityTest\Fixture\User;
-use Mycsense\ACL\Action;
-use Mycsense\ACL\ACLService;
+use FunctionalTest\MyCLabs\ACL\EntityTest\Fixture\Article;
+use FunctionalTest\MyCLabs\ACL\EntityTest\Fixture\Category;
+use FunctionalTest\MyCLabs\ACL\EntityTest\Fixture\User;
+use MyCLabs\ACL\Action;
+use MyCLabs\ACL\ACLService;
 
 class EntityTest extends \PHPUnit_Framework_TestCase
 {
